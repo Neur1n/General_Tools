@@ -1,0 +1,163 @@
+#=============================================================================== 1. Set up Git
+$ git config --golbal user.name "your name"
+$ git config --golbal user.email "your email"
+#
+# The information will be stored in ~/.gitconfig.
+#
+
+#=============================================================================== 2. Caching GitHub ID
+$ git config --global credential.helper cache
+$ git config --global credential.helper 'cache --timeout=3600'
+#
+# Tell Git to remember your GitHub username and password every time it talks to 
+# GitHub.
+#
+#=============================================================================== 3. Initialize
+$ git init
+
+#=============================================================================== 4. Clone
+$ git clone [repository_url]
+
+#=============================================================================== 5. Add Files
+https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
+
+$ git add [file_name]
+#
+# Adds the file to your local repository and stages it for commit. To unstage a
+# file, use 'git reset HEAD [your_file}'.
+#
+# NOTE Using 'git add .' to add all the file in pwd.
+# NOTE Use '$ git status' to staging, '$ git status -s' to get impact info.
+#
+
+$ git commit -m "Add existing file"
+#
+# Commits the tracked changes and prepares them to be pushed to a remote 
+# repository. To remove this commit and modify the file, use 'git reset --soft 
+# HEAD~1' and commit and add the file again.
+#
+
+
+NOTE Example:
+
+In "IGV" repository, running:
+
+	$ catkin_create_pkg igv_motion roscpp std_msgs
+
+gives out:
+
+	On branch master
+	Your branch is up-to-date with 'origin/master'.
+
+	Untracked files:
+	  (use "git add <file>..." to include in what will be committed)
+
+			src/igv_motion/
+
+	nothing added to commit but untracked files present (use "git add" to track)
+
+Then putting 2 files into igv_motion/src and running:
+
+	$ git add .
+	$ git status
+
+gives out:
+
+	On branch master
+	Your branch is up-to-date with 'origin/master'.
+
+	Changes to be committed:
+	  (use "git reset HEAD <file>..." to unstage)
+
+			new file:   src/igv_motion/CMakeLists.txt
+			new file:   src/igv_motion/package.xml
+			new file:   src/igv_motion/src/MotionGenerator.cpp
+			new file:   src/igv_motion/src/MotionGenerator.hpp
+#
+# NOTE If anything change applied to a tracked file, the file needs to be 
+#      "git add"ed again.
+#
+
+#=============================================================================== 6. Ignoring Files
+TODO https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#Ignoring-Files
+
+#=============================================================================== 7. Change Details
+$ git diff
+#
+# Show what exactly you changed, not what files you changed.
+#
+
+$ git diff --staged
+#
+# Show what you've staged that will go into your next commit. 
+#
+
+#=============================================================================== 8. Commit
+$ git commit
+#
+# $ git commit -v:
+#
+#	  puts the diff of your change in the editor so you can see exactly what 
+#	  changes you’re committing
+#
+# $ git commit -m "[commit_message]"
+#
+#	  Committing with message. 
+#
+# NOTE According to the website, using '$ git commit' will bring up the editor
+#      and commits will be created after exiting the editor. However using ":q"
+#      to quit the editor (Vim) made my commit abort, "due to empty commit 
+#      message" as it said. Maybe ":wq" should be used.
+#      But by using 
+#
+#		   $ git commit -m "added MotionGenerator.cpp/hpp"
+#
+#      made a commit without the editor popping up.
+#
+# NOTE ":wq" IS NOT WORKING.
+#
+
+#=============================================================================== 9. Removing Files
+$ git rm [file_name]
+
+TODO More details about this topic:
+
+	https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#Removing-Files
+
+#=============================================================================== 10. Moving Files
+$ git mv [file_from] [file_to]
+#
+# This is equivalent to (example):
+#
+#	  $ mv README.md README
+#	  $ git rm README.md
+#	  $ git add README
+#
+# ERROR Somehow this looks not TRUE for me. The '$ git mv ...' and 'rm ...'
+#       worked the same in my case. It was not copying the file, but directly
+#       move AND renamed it.
+#       And when I tried to run line 133, the file cannot be found already.
+#
+
+#=============================================================================== 11. View Commit History
+$ git log
+#
+# To remove log file, go to line 125.
+#
+# NOTE There are several formats for showing logs, for details go to:
+#
+#	  https://git-scm.com/book/en/v2/Git-Basics-Viewing-the-Commit-History
+#
+
+#=============================================================================== 12. Undo
+$ git commit --amend
+#
+# If you commit and realize you forgot to stage the changes in a file you 
+# wanted to add to this commit, then doing this:
+#
+#	  $ git commit -m 'initial commit'
+#	  $ git add forgotten_file
+#	  $ git commit --amend
+#
+# ends up with a SINGLE commit - the 2nd one replaces the results of the 1st.
+#
