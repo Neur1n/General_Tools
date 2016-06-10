@@ -16,15 +16,15 @@ $ git config --global credential.helper 'cache --timeout=3600'
 $ git init
 
 #=============================================================================== 4. Clone
-$ git clone [repository_url]
+$ git clone <repository_url>
 
 #=============================================================================== 5. Add Files
 https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository
 
-$ git add [file_name]
+$ git add <file_name>
 #
 # Adds the file to your local repository and stages it for commit. To unstage a
-# file, use 'git reset HEAD [your_file}'.
+# file, use 'git reset HEAD <your_file>'.
 #
 # NOTE Using 'git add .' to add all the file in pwd.
 # NOTE Use '$ git status' to staging, '$ git status -s' to get impact info.
@@ -118,14 +118,14 @@ $ git commit
 #
 
 #=============================================================================== 9. Removing Files
-$ git rm [file_name]
+$ git rm <file_name>
 
 TODO More details about this topic:
 
 	https://git-scm.com/book/en/v2/Git-Basics-Recording-Changes-to-the-Repository#Removing-Files
 
 #=============================================================================== 10. Moving Files
-$ git mv [file_from] [file_to]
+$ git mv <file_from> <file_to>
 #
 # This is equivalent to (example):
 #
@@ -164,3 +164,98 @@ $ git commit --amend
 #
 
 #-------------------------------------------------------------------------- 12.2 Unstaging
+$ git add *
+#
+# For example, you've changed 2 files and want to commit them as 2 separate 
+# changes, but accidentally type git add * and stage them both.
+#
+# NOTE Looks like this one works as same as '$ git add .'.
+#
+
+$ git status
+#
+# Gives out (example):
+#
+#	  On branch master
+#	  Changes to be committed:
+#		(use "git reset HEAD <file>..." to unstage)   --> NOTE
+#	  
+#		  renamed:    README.md -> README
+#		  modified:   CONTRIBUTING.md
+#
+
+$ git reset HEAD CONTRIBUTING.md
+#
+# Gives out:
+#
+#	  Unstaged changes after reset:
+#	  M	CONTRIBUTING.md
+#
+
+$ git status
+#
+# Gives out:
+#
+#	  On branch master
+#	  Changes to be committed:
+#		(use "git reset HEAD <file>..." to unstage)
+#	  
+#		  renamed:    README.md -> README
+#	  
+#	  Changes not staged for commit:
+#		(use "git add <file>..." to update what will be committed)
+#		(use "git checkout -- <file>..." to discard changes in working directory) --> NOTE
+#	  
+#		  modified:   CONTRIBUTING.md
+#
+
+#-------------------------------------------------------------------------- 12.3 Unmodifying
+$ git check -- CONTRIBUTING.md
+$ git status
+#
+# Gives out:
+#
+#	  On branch master
+#	  Changes to be committed:
+#		(use "git reset HEAD <file>..." to unstage)
+#	  
+#		  renamed:    README.md -> README
+#
+# The changes have been discarded.
+#
+
+#=============================================================================== 13. Work with Remotes
+#-------------------------------------------------------------------------- 13.1 Show
+$ cd ~/Desktop/General_Tools
+$ git remote
+#
+# Gives out:
+#
+#	  origin
+#
+
+$ git remote -v
+#
+# Gives out:
+#
+#	  origin	https://github.com/Neur1n/General_Tools.git (fetch)
+#	  origin	https://github.com/Neur1n/General_Tools.git (push)
+#
+
+#-------------------------------------------------------------------------- 13.2 Add Repository
+TODO https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes
+
+$ git remote add [<options>] <name> <url>
+
+#-------------------------------------------------------------------------- 13.3 Fetch & Pull
+$ git fetch <remote_name>
+#
+# If you clone a repository, the command automatically adds that remote 
+# repository under the name “origin”. So, git fetch origin fetches any new work
+# that has been pushed to that server since you cloned (or last fetched from) 
+# it.
+# 
+# '$ git fetch ' Only downloads the data to your local repository – it doesn't 
+# automatically merge it with any of your work or modify what you’re currently 
+# working on. 
+#
