@@ -150,6 +150,7 @@ $ git log
 #
 
 #=============================================================================== 12. Undo
+#-------------------------------------------------------------------------- 12.1 Amend
 $ git commit --amend
 #
 # If you commit and realize you forgot to stage the changes in a file you 
@@ -161,3 +162,5 @@ $ git commit --amend
 #
 # ends up with a SINGLE commit - the 2nd one replaces the results of the 1st.
 #
+
+#-------------------------------------------------------------------------- 12.2 Unstaging
