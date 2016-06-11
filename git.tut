@@ -356,4 +356,35 @@ $ git checkout master
 #
 
 #-------------------------------------------------------------------------- 15.3 Merge
+$ $ git add git.tut
+$ git commit -m "GT_bkp commit 3"
+$ git checkout master
+#
+# Assume that I was working on git.tut file of GT_bkp branch until line 358,
+# then commit it. Before merge GT_bkp/git.tut into master/git.tut, switch back
+# to master branch.
+#
+# TODO "Stashing and cleaning" is mentioned in this section, go to the website
+#      for more detials.
+#
 
+$ git merge GT_bkp
+#
+# Merge GT_bkp into master. Gives out:
+#
+#	  Updating 8665c94..d0924c4
+#	  Fast-forward
+#	   git.tut | 108 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++---
+#	   1 file changed, 103 insertions(+), 5 deletions(-)
+#
+# NOTE "Fast-forward" is emphasized, go to the website for more details.
+#
+
+TODO Something different than "fast-forward" is included in the website:
+
+	https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#Basic-Merging
+	https://git-scm.com/book/en/v2/Git-Branching-Basic-Branching-and-Merging#Basic-Merge-Conflicts
+	#
+	# Occurs when the same part of the same file is changed in 2 branches which 
+	# are about to be merged together.
+	#
