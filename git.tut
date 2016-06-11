@@ -251,11 +251,86 @@ $ git remote add [<options>] <name> <url>
 $ git fetch <remote_name>
 #
 # If you clone a repository, the command automatically adds that remote 
-# repository under the name “origin”. So, git fetch origin fetches any new work
-# that has been pushed to that server since you cloned (or last fetched from) 
-# it.
+# repository under the name "origin". So, "$ git fetch origin" fetches any new 
+# work that has been pushed to that server since you cloned (or last fetched 
+# from) it.
 # 
-# '$ git fetch ' Only downloads the data to your local repository – it doesn't 
-# automatically merge it with any of your work or modify what you’re currently 
+# '$ git fetch' only downloads the data to your local repository – it doesn't 
+# automatically merge it with any of your work or modify what you're currently 
 # working on. 
+#
+
+$ git pull
+#
+# Automatically FETCH and MERGE that remote branch into your current branch.
+#
+
+#-------------------------------------------------------------------------- 13.4 Push
+$ git push origin master
+#
+# NOTE If you and someone else clone at the same time and they push upstream 
+#      and then you push upstream, your push will rightly be rejected. You'll 
+#      have to fetch their work first and incorporate it into yours before 
+#      you'll be allowed to push. 
+#
+
+#-------------------------------------------------------------------------- 13.5 Inspect
+$ git remote show <remote_name>
+#
+# TODO More details.
+# 
+
+#-------------------------------------------------------------------------- 13.6 Remove & Rename
+$ git remote rename <old_name> <new_name>
+
+$ git remote rm <remote_name>
+
+#=============================================================================== 14. Tagging
+TODO https://git-scm.com/book/en/v2/Git-Basics-Tagging
+
+#=============================================================================== 15. Branch
+#-------------------------------------------------------------------------- 15.1 Create New Branch
+$ git branch <branch_name>
+#
+# Example: 
+#
+#	  $ git branch GT_bkp
+#
+# NOTE It only creates a new branch, doesn't switch to it - the HEAD pointer 
+#      still pointers to master branch. Check it with:
+#
+#		   $ git log --oneline --decorate
+#
+#      gives out:
+#
+#		   8665c94 (HEAD, origin/master, origin/HEAD, master, GT_bkp) test fit.tut
+#		   fd874d4 trivial modification
+#		   83c4ae1 Add files via upload
+#		   6eb6bb2 Rename tools.txt to tools.tut
+#		   617572e Add files via upload
+#		   02bfa6b Initial commit
+# 
+# NOTE This method (line 302) do not show where is HEAD pointing to as in the 
+#      website example. You have to use:
+#
+#		   $ git branch
+#
+#      then it gives out:
+#
+#			 GT_bkp
+#		   * master  --> with green color highlighted
+#
+
+#-------------------------------------------------------------------------- 15.2 Switch Branch
+$ git checkout <branch_name>
+#
+# Gives out:
+#
+#	  M	git.tut
+#	  Switched to branch 'GT_bkp'
+#
+# Run '$ git branch' again and it gives out:
+#
+#	  * GT_bkp
+#	    master  --> with green color highlighted
 #
