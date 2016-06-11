@@ -334,3 +334,19 @@ $ git checkout <branch_name>
 #	  * GT_bkp
 #	    master  --> with green color highlighted
 #
+
+$ git add git.tut
+$ git commit -m "GT_bkp commit 1"
+#
+# Make the 1st commit of the GT_bkp branch. Right now the "git.tut" file 
+# contains the contents up to line 336.
+#
+
+$ git checkout master
+#
+# Switch back to master, the "git.tut" file will be reverted to the last 
+# snapshot that master points to, which was section 13.3 in my case.
+#
+# NOTE I noticed that there was a refresh on the git.tut icon, that meant it 
+#      was replaced.
+#
