@@ -334,6 +334,10 @@ $ git checkout <branch_name>
 #	  * GT_bkp
 #	    master  --> with green color highlighted
 #
+# NOTE The equivalent method of "creating & switching" is:
+#
+#		   $ git checkout -b <branch_name>
+#
 
 $ git add git.tut
 $ git commit -m "GT_bkp commit 1"
@@ -350,3 +354,6 @@ $ git checkout master
 # NOTE I noticed that there was a refresh on the git.tut icon, that meant it 
 #      was replaced.
 #
+
+#-------------------------------------------------------------------------- 15.3 Merge
+
