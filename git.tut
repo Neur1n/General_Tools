@@ -356,7 +356,7 @@ $ git checkout master
 #
 
 #-------------------------------------------------------------------------- 15.3 Merge
-$ $ git add git.tut
+$ git add git.tut
 $ git commit -m "GT_bkp commit 3"
 $ git checkout master
 #
