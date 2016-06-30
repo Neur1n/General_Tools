@@ -1,2 +1,2 @@
 # General_Tools
-General Tools for Linux
+General Tools for IGV
