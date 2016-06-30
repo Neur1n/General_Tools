@@ -1,0 +1,26 @@
+NOTE All commands begins with <esc>.
+
+<esc>:             0x1B
+
+<enter> (<cr>):    0x0D
+
+#-------------------------------------------------------------------------- Baud Rate
+B:                 0x42
+#
+# Now is 19200 (default)
+#
+
+#-------------------------------------------------------------------------- Output Rate
+R:                 0x52
+#
+# Now is 20Hz.
+#
+
+#-------------------------------------------------------------------------- Output Format
+*:                 0x2A
+X:                 0x58
+#
+# Standard: $C<heading>P<pitch>R<roll>T<temperature>*<checksum>
+#
+# Now is: $C...R...T...*<checksum>, set by "1B 58 37 0D"
+#
